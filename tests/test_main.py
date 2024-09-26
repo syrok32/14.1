@@ -1,4 +1,4 @@
-from tests.conf import category_sweet, product_milk
+from tests.conftest import category_sweet, product_milk
 
 
 def test_product_init(product_milk):
@@ -12,5 +12,12 @@ def test_categ_init(category_sweet):
     assert category_sweet.name == "candy"
     assert category_sweet.description == "очень вкусное"
     assert category_sweet.products == ["milka", "mars"]
-    assert category_sweet.quantity_of_goods == 2
-    assert category_sweet.number_of_categories == 1
+    assert category_sweet.category_count == 2
+    assert category_sweet.product_count == 1
+
+
+def test_utils():
+    from src.utils import create_to, read_json
+
+    prod = create_to(read_json("products.json"))
+    assert prod[0].name == "Смартфоны"

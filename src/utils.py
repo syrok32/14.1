@@ -1,6 +1,6 @@
 import json
 
-from main import Category, Product
+from src.main import Category, Product
 
 
 def create_to(data):
@@ -15,11 +15,11 @@ def create_to(data):
 
 
 def read_json(file_js: str) -> dict:
-    with open(file_js, "r", encoding="utf-8") as file:
+    with open(f"./data/{file_js}", "r", encoding="utf-8") as file:
         data = json.load(file)
     return data
 
 
-ds = create_to(read_json("../data/products.json"))
+ds = create_to(read_json("products.json"))
 
 print(ds[0].name)
