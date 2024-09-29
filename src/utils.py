@@ -1,6 +1,6 @@
 import json
 
-from src.main import Category, Product
+from main import Category, Product
 
 
 def create_to(data):
