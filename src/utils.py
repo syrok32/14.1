@@ -22,4 +22,4 @@ def read_json(file_js: str) -> dict:
 
 ds = create_to(read_json("products.json"))
 
-print(ds[0].name)
+print(ds[0].products)
