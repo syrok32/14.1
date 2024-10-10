@@ -1,29 +1,25 @@
-from tests.conftest import category_price_setter, category_sweet, categoty_new_prod, product_milk
+from tests.conftest import category_price_setter, category_sweet, categoty_new_prod, product_milk, support_func
 
 
 def test_product_init(product_milk):
     assert product_milk.name == "milk"
-    assert product_milk.description == "очень вкусное"
-    assert product_milk.price == 230
-    assert product_milk.quantity == 34
+    assert product_milk.description == "Fresh milk"
+    assert product_milk.price == 50
+    assert product_milk.quantity == 10
 
 
 def test_categ_init(category_sweet):
     assert category_sweet.name == "candy"
     assert category_sweet.description == "очень вкусное"
-
-    assert category_sweet.category_count == 2
-    assert category_sweet.product_count == 1
+    assert category_sweet.category_count == 5
+    assert category_sweet.product_count == 2
 
 
 def test_new_product(categoty_new_prod):
-
     assert categoty_new_prod.name == "Samsung Galaxy S23 Ultra", "Ошибка: имя продукта"
     assert categoty_new_prod.description == "256GB, Серый цвет, 200MP камера", "Ошибка: описание продукта"
     assert categoty_new_prod.price == 180000, "Ошибка: цена продукта"
     assert categoty_new_prod.quantity == 5, "Ошибка: количество продукта"
-
-    print("test_new_product: PASSED")
 
 
 def test_utils():
@@ -34,8 +30,17 @@ def test_utils():
 
 
 def test_price_setter(category_price_setter):
-
     category_price_setter.price = 950000
     assert category_price_setter.price == 950000
 
-    # Попытка уменьшить цену (в реальной жизни нужно подтвердить через input())
+
+def test_category_products(category_sweet):
+    assert str(category_sweet) == "candy, количество продуктов: 80 шт."
+
+
+def test_product_str(product_milk):
+    assert str(product_milk) == "milk, 50 руб. Остаток: 10 шт."
+
+
+def test_support_class(support_func):
+    assert str(support_func) == "Samsung Galaxy S23 Ultra Iphone 15 Xiaomi Redmi Note 11"
