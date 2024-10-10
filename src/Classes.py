@@ -36,6 +36,12 @@ class Product:
             else:
                 self.__price = new_price
 
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        return self.price * self.quantity + (self.price * self.quantity)
+
 
 class Category:
     name: str
@@ -50,15 +56,19 @@ class Category:
         self.__products = products
         Category.product_count += 1
         Category.category_count += len(products)
+        self.summ_prod = sum(product.quantity for product in products)
 
     def add_product(self, prod):
         self.__products.append(prod)
         Category.product_count += 1
+        self.summ_prod += prod.quantity
 
     @property
     def products(self):
         new_str = ""
         for i in self.__products:
-            new_str += f"{i.name}, {i.price}. Остаток:{i.quantity}\n"
-
+            new_str += f"{i.name}, {i.price} руб. Остаток:{i.quantity}\n"
         return new_str
+
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {self.summ_prod } шт."
