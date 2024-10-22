@@ -7,10 +7,13 @@ class Product:
     price: int
     quantity: int
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity) -> None:
+        """объявление аотрибувов"""
         self.name = name
+
         self.description = description
         self.__price = price
+
         self.quantity = quantity
 
     @classmethod
@@ -58,17 +61,22 @@ class Category:
         Category.category_count += len(products)
         self.summ_prod = sum(product.quantity for product in products)
 
-    def add_product(self, prod):
-        self.__products.append(prod)
-        Category.product_count += 1
-        self.summ_prod += prod.quantity
+    def add_product(self, prod) -> None:
+        """добовление родкута в котегорию"""
+
+        if isinstance(prod, Product): # если является классом или подкласом Product
+            self.__products.append(prod)
+            Category.product_count += 1
+            self.summ_prod += prod.quantity
+        else:
+            raise TypeError
 
     @property
-    def products(self):
+    def products(self) -> str:
         new_str = ""
         for i in self.__products:
             new_str += f"{i.name}, {i.price} руб. Остаток:{i.quantity}\n"
         return new_str
 
-    def __str__(self):
-        return f"{self.name}, количество продуктов: {self.summ_prod } шт."
+    def __str__(self) -> str:
+        return f"{self.name}, количество продуктов: {self.summ_prod} шт."

@@ -1,9 +1,10 @@
 import json
 
-from main import Category, Product
+from src.Classes import Category, Product
 
 
 def create_to(data):
+    """Перобразовывает JSon в класс"""
     category = []
     for i in data:
         product = []
@@ -15,6 +16,7 @@ def create_to(data):
 
 
 def read_json(file_js: str) -> dict:
+    """Чтение jSon файла"""
     with open(f"./data/{file_js}", "r", encoding="utf-8") as file:
         data = json.load(file)
     return data

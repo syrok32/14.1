@@ -1,6 +1,7 @@
 import pytest
 
 from src.Classes import Category, Product
+from src.Classes_new import LawnGrass, Smartphone
 from src.sup_class import Support_range_product
 
 
@@ -15,6 +16,16 @@ def category_sweet():
     product1 = Product("milka", "очень вкусный шоколад", 100, 50)
     product2 = Product("mars", "шоколадный батончик", 80, 30)
     return Category("candy", "очень вкусное", [product1, product2])
+
+
+@pytest.fixture()
+def Smartphone_class():
+    return Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
+
+
+@pytest.fixture()
+def grass():
+    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
 
 
 @pytest.fixture()
