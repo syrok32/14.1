@@ -1,6 +1,3 @@
-import idlelib.run
-
-
 class Product:
     name: str
     description: str
@@ -64,7 +61,7 @@ class Category:
     def add_product(self, prod) -> None:
         """добовление родкута в котегорию"""
 
-        if isinstance(prod, Product): # если является классом или подкласом Product
+        if isinstance(prod, Product):  # если является классом или подкласом Product
             self.__products.append(prod)
             Category.product_count += 1
             self.summ_prod += prod.quantity
