@@ -1,4 +1,5 @@
-from tests.conftest import category_price_setter, category_sweet, categoty_new_prod, product_milk, support_func
+from tests.conftest import (Smartphone_class, category_price_setter, category_sweet, categoty_new_prod, grass,
+                            product_milk, support_func)
 
 
 def test_product_init(product_milk):
@@ -6,6 +7,27 @@ def test_product_init(product_milk):
     assert product_milk.description == "Fresh milk"
     assert product_milk.price == 50
     assert product_milk.quantity == 10
+
+
+def test_Smartphone_init(Smartphone_class):
+    assert Smartphone_class.name == "Iphone 15"
+    assert Smartphone_class.description == "512GB, Gray space"
+    assert Smartphone_class.price == 210000.0
+    assert Smartphone_class.quantity == 8
+    assert Smartphone_class.efficiency == 98.2
+    assert Smartphone_class.model == "15"
+    assert Smartphone_class.memory == 512
+    assert Smartphone_class.color == "Gray space"
+
+
+def test_LawnGrass(grass):
+    assert grass.name == "Газонная трава"
+    assert grass.description == "Элитная трава для газона"
+    assert grass.price == 500.0
+    assert grass.quantity == 20
+    assert grass.country == "Россия"
+    assert grass.germination_period == "7 дней"
+    assert grass.color == "Зеленый"
 
 
 def test_categ_init(category_sweet):
