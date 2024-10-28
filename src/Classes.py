@@ -1,4 +1,15 @@
-class Product:
+from src.abstract import BaseProduct
+
+
+class MixinLog:
+    def __init__(self, name, description, price, quantity):
+        super().__init__(name, description, price, quantity)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity})"
+
+
+class Product(BaseProduct, MixinLog):
     name: str
     description: str
     price: int
@@ -12,6 +23,7 @@ class Product:
         self.__price = price
 
         self.quantity = quantity
+        print(repr(self))
 
     @classmethod
     def new_product(cls, dict_product):
@@ -35,6 +47,9 @@ class Product:
                     print("ценна не будет пониженна")
             else:
                 self.__price = new_price
+
+    def get_name(self):
+        return self.name
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
@@ -77,3 +92,11 @@ class Category:
 
     def __str__(self) -> str:
         return f"{self.name}, количество продуктов: {self.summ_prod} шт."
+
+
+class MixinLog(Product):
+    def __init__(self, name, description, price, quantity):
+        super().__init__(name, description, price, quantity)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity})"
