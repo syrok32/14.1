@@ -1,6 +1,6 @@
 if __name__ == "__main__":
 
-    from src.Classes import Category, Product
+    from src.Classes import Category
     from src.Classes_new import LawnGrass, Smartphone
 
     smartphone1 = Smartphone(
