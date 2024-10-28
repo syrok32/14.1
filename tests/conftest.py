@@ -58,3 +58,4 @@ def support_func():
         [product1, product2, product3],
     )
     return Support_range_product(category1)
+
