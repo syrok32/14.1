@@ -18,6 +18,9 @@ class Smartphone(Product):
         else:
             raise TypeError
 
+    def get_name(self):
+        return self.name
+
 
 class LawnGrass(Product):
 
@@ -33,3 +36,6 @@ class LawnGrass(Product):
             return self.price + other.price
         else:
             raise TypeError
+
+    def get_name(self):
+        return self.name
