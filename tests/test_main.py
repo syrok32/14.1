@@ -1,5 +1,7 @@
+import pytest
+
 from tests.conftest import (Smartphone_class, category_price_setter, category_sweet, categoty_new_prod, grass,
-                            product_milk, support_func, category_sweet_error)
+                            product_milk, support_func, category_sweet_error, Pproduct_invalid_set)
 from src.Classes import Category, Product
 
 def test_product_init(product_milk):
@@ -11,6 +13,9 @@ def test_product_init(product_milk):
 def test_category_error(category_sweet_error):
     assert category_sweet_error.middle_price() == 0.0
 
+def test_product_error():
+    with pytest.raises(ValueError) as er:
+        Product("Бракованный товар", "Неверное количество", 1000.0, 0)
 
 
 def test_Smartphone_init(Smartphone_class):
@@ -72,7 +77,7 @@ def test_support_class(support_func):
     assert str(support_func) == "Samsung Galaxy S23 Ultra Iphone 15 Xiaomi Redmi Note 11"
 
 
-
+#
 # def test_new_prod(new_prod):
-#     assert repr(Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера",
-#                        180000.0, 5))  == repr(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))
+#      assert repr(Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера",
+#                         180000.0, 5))  == repr(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))
