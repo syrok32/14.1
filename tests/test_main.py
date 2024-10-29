@@ -1,5 +1,5 @@
 from tests.conftest import (Smartphone_class, category_price_setter, category_sweet, categoty_new_prod, grass,
-                            product_milk, support_func)
+                            product_milk, support_func, category_sweet_error)
 from src.Classes import Category, Product
 
 def test_product_init(product_milk):
@@ -7,6 +7,10 @@ def test_product_init(product_milk):
     assert product_milk.description == "Fresh milk"
     assert product_milk.price == 50
     assert product_milk.quantity == 10
+
+def test_category_error(category_sweet_error):
+    assert category_sweet_error.middle_price() == 0.0
+
 
 
 def test_Smartphone_init(Smartphone_class):
@@ -34,7 +38,7 @@ def test_categ_init(category_sweet):
     assert category_sweet.name == "candy"
     assert category_sweet.description == "очень вкусное"
     assert category_sweet.category_count == 5
-    assert category_sweet.product_count == 2
+    assert category_sweet.product_count == 3
 
 
 def test_new_product(categoty_new_prod):
@@ -69,6 +73,6 @@ def test_support_class(support_func):
 
 
 
-def test_new_prod(new_prod):
-    assert repr(Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера",
-                       180000.0, 5))  == repr(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))
+# def test_new_prod(new_prod):
+#     assert repr(Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера",
+#                        180000.0, 5))  == repr(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))

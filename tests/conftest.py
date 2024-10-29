@@ -18,6 +18,16 @@ def category_sweet():
     return Category("candy", "очень вкусное", [product1, product2])
 
 
+
+@pytest.fixture()
+def category_sweet_error():
+    product1 = Product("milka", "очень вкусный шоколад", 100, 50)
+    product2 = Product("mars", "шоколадный батончик", 80, 30)
+    return Category("candy", "очень вкусное", [])
+
+
+
+
 @pytest.fixture()
 def Smartphone_class():
     return Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")

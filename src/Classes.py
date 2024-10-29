@@ -83,6 +83,12 @@ class Category:
         else:
             raise TypeError
 
+    def middle_price(self):
+        try:
+            return (self.summ_prod / Category.category_count)
+        except ZeroDivisionError:
+            return 0
+
     @property
     def products(self) -> str:
         new_str = ""
