@@ -124,7 +124,7 @@ def test_multiple_categories():
     assert Category.total_categories == 4
     assert Category.total_products == 1
 
-
+н 
 ## Использование
 
 Создавайте объекты классов `Product` и `Category` и используйте их в вашем приложении для управления товарами и категориями. 
