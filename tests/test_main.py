@@ -1,6 +1,6 @@
 from tests.conftest import (Smartphone_class, category_price_setter, category_sweet, categoty_new_prod, grass,
                             product_milk, support_func)
-
+from src.Classes import Category, Product
 
 def test_product_init(product_milk):
     assert product_milk.name == "milk"
@@ -66,3 +66,9 @@ def test_product_str(product_milk):
 
 def test_support_class(support_func):
     assert str(support_func) == "Samsung Galaxy S23 Ultra Iphone 15 Xiaomi Redmi Note 11"
+
+
+
+def test_new_prod(new_prod):
+    assert repr(Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера",
+                       180000.0, 5))  == repr(Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5))
