@@ -21,8 +21,11 @@ class Product(BaseProduct, MixinLog):
 
         self.description = description
         self.__price = price
+        if quantity > 0:
+            self.quantity = quantity
+        else:
+            raise ValueError
 
-        self.quantity = quantity
         print(repr(self))
 
     @classmethod
@@ -100,9 +103,4 @@ class Category:
         return f"{self.name}, количество продуктов: {self.summ_prod} шт."
 
 
-class MixinLog(Product):
-    def __init__(self, name, description, price, quantity):
-        super().__init__(name, description, price, quantity)
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity})"

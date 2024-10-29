@@ -18,6 +18,9 @@ def category_sweet():
     return Category("candy", "очень вкусное", [product1, product2])
 
 
+@pytest.fixture()
+def Pproduct_invalid_set():
+    return Product("Бракованный товар", "Неверное количество", 1000.0, 0)
 
 @pytest.fixture()
 def category_sweet_error():
